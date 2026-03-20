@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Predictor</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            margin: 10px 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .predict {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .clear {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            background: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🎓 Student Score Predictor</h2>
+
+    <form method="POST">
+        <input type="number" name="hours" placeholder="Study Hours" value="{{ hours }}">
+        <input type="number" name="sleep" placeholder="Sleep Hours" value="{{ sleep }}">
+        <input type="number" name="prev" placeholder="Previous Marks" value="{{ prev }}">
+
+        <br>
+
+        <button class="btn predict" type="submit" name="predict">Predict</button>
+        <button class="btn clear" type="submit" name="clear">Clear</button>
+    </form>
+
+    {% if result is not none %}
+        <div class="result">
+            🎯 Predicted Score: <b>{{ result }}</b>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
